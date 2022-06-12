@@ -16,7 +16,10 @@ memtext = "ram:" + memResult[:4] + "GB/7.70GB (" + str(mem.percent) + "%)"
 
 # バッテリー使用率
 battery = psutil.sensors_battery()
-batterytext = "battery:" + str(battery.percent) + "%"
+if battery == None:
+    batterytext = "battery:None"
+else:
+    batterytext = "battery:" + str(battery.percent) + "%"
 
 # 起動時間
 bootTime = datetime.datetime.fromtimestamp(psutil.boot_time()).strftime("%Y-%m-%d %H:%M:%S")
